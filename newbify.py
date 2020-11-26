@@ -7,14 +7,15 @@ with open("newbify.py") as f:
 
 fuxd_lines = []
 for line in lines:
+    #for symbol in ['[', ']', '(', ')', ':', ',', '==', '=']:
     for symbol in ['[', ']', '(', ')', ':', ',', '==', '=']:
         # Do not alter shit in strings
         if not re.search(f'''(\".*\{symbol}.*\")|(\'.*\{symbol}.*\')''', line):
             line = line.replace(symbol, f'{randint(5, 25)*" "}{symbol}{randint(5, 25)*" "}' )
-            if symbol == "==":
-                line = line.replace("==", f'$$' )
-            if symbol == "=":
-                line = line.replace("$$", f'==' )
+            # if symbol == "==":
+            #     line = line.replace("==", '$$')
+            # if symbol == "=":
+            #     line = line.replace('$$', '==')
 
     if re.search(r"^[\t ]*if", line):
         line = line.replace("if", f'if{randint(5, 25)*" "}' )
